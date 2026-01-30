@@ -1,39 +1,28 @@
 # Session Context
 
 ## Session updates
-- 2026-01-22: Updated AGENTS.md paths to use docs/* and remove ProjectTemplate references. Current status: paths cleaned. Next steps: none.
+- 2026-01-29: Created implementation plan for ReeseBot. See docs/PLAN.md for full details.
+- 2026-01-22: Updated AGENTS.md paths to use docs/* and remove ProjectTemplate references.
 
 ## What this repo is
-- One sentence: what this project does.
-
-Example Q/A:
-Q: What is this repo?
-A: A Chrome extension that batch-fills Drupal edit forms from a CSV.
+A TypeScript application that automatically sends a daily excuse email to a school for spare period attendance, eliminating the need for manual emails each day.
 
 ## Current goal
-- The most important thing to do next.
-
-Example Q/A:
-Q: What’s the goal for this session?
-A: Add support for XLSX import and fix notification styling.
+Implement the core email script with Resend integration and Railway deployment configuration.
 
 ## Where to look first
-- 3–5 files/folders that matter most.
-
-Example Q/A:
-Q: What files should I check first?
-A: manifest.json, lib/data-manager.js, lib/form-filler.js, content/content.js, config/form-templates.json.
+- `src/index.ts` - Main email script
+- `docs/PLAN.md` - Full implementation plan
+- `.env.example` - Required environment variables
+- `railway.json` - Deployment configuration
 
 ## Known issues / risks
-- Bullet list of sharp edges or unresolved problems.
-
-Example Q/A:
-Q: Any known issues?
-A: XLSX import doesn’t work; CSV parsing fails on embedded newlines.
+- Requires Resend API key and verified sender domain
+- Railway cron job needs correct timezone configuration
+- School email address must be accurate
 
 ## How to validate
-- Minimal steps to verify changes.
-
-Example Q/A:
-Q: How do we validate?
-A: Reload the extension, import a sample CSV, open a /node/*/edit page, click “Fill Form,” confirm fields update.
+1. Set up `.env` with test email address
+2. Run `npm run dev` locally
+3. Verify email received
+4. Deploy to Railway and trigger manual run
